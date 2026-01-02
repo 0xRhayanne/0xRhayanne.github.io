@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Animated Pacman Using Pure CSS">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Animated Pacman - Pure CSS</title>
+  <style>
+    html, body {
+      height: 100%;          /* Ensure full height for both html and body */
+      margin: 0;             /* Remove default margin */
+      padding: 0;            /* Remove default padding */
+      overflow: hidden;      /* Prevent any scrolling */
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;     /* keep your original background */
+      position: relative;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+
+    .pacman {
+      width: 100px;
+      height: 100px;
+      background: yellow; /* Pacman's body is yellow */
+      margin-left: -200px; /* move left by 30px */
+      overflow: hidden;    /* Hide anything overflowing */
+      position: absolute;
+      z-index: 1; /* Pacman is behind the dots */
+      border: none; /* Ensure no border on Pacman */
+    }
+
+    .mouth {
+      animation: eat 0.3s alternate infinite;
+      animation-timing-function: linear;
+      position: absolute;
+      width: 100px;
+      height: 0;
+
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-right: 100px solid black; /* The black part of the mouth */
+    }
+
+    /* Mouth opening and closing animation */
+    @keyframes eat {
+      from {
+        border-top: 60px solid transparent;
+        border-bottom: 60px solid transparent;
+      }
+      to {
+        border-top: 0 solid transparent;
+        border-bottom: 0 solid transparent;
+      }
+    }
+
+    /* Container for dots */
+    .dots-container {
+      position: absolute;
+      top: 50.5%;
+      left: 47%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 2; /* Dots appear above Pacman */
+    }
+
+    /* Add some food (dots) in a line, moving towards Pacman */
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      margin-right: 50px; /* Spacing between dots */
+      position: absolute;
+      animation: moveDot 4s linear infinite;
+    }
+
+    /* Positioning the dots in a line, moving towards Pacman from the right */
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .dot:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+    .dot:nth-child(3) {
+      animation-delay: -1s;
+    }
+    .dot:nth-child(4) {
+      animation-delay: -1.5s;
+    }
+    .dot:nth-child(5) {
+      animation-delay: -2s;
+    }
+    .dot:nth-child(6) {
+      animation-delay: -2.5s;
+    }
+    .dot:nth-child(7) {
+      animation-delay: -3s;
+    }
+    .dot:nth-child(8) {
+      animation-delay: -3.5s;
+    }
+
+    /* Movement animation for the dots */
+    @keyframes moveDot {
+      0% {
+        transform: translateY(-50%) rotate(180deg);
+        left: 500px;
+      }
+      100% {
+        transform: translateY(-50%) rotate(0deg);
+        left: -20px;
+      }
+    }
+
+    /* Glowing background */
+    .glowing {
+      position: absolute;
+      min-width: 700px;
+      height: 550px;
+      margin: -150px;
+      transform-origin: right;
+      animation: colorChange 5s linear infinite;
+      z-index: 0; /* Ensure this is behind everything else */
+    }
+
+    .glowing:nth-child(even) {
+      transform-origin: left;
+    }
+
+    @keyframes colorChange {
+      0% {
+        filter: hue-rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        filter: hue-rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .glowing span {
+      position: absolute;
+      top: calc(80px * var(--i));
+      left: calc(80px * var(--i));
+      bottom: calc(80px * var(--i));
+      right: calc(80px * var(--i));
+    }
+
+    .glowing span::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      width: 15px;
+      height: 15px;
+      background: #f00;
+      border-radius: 50%;
+    }
+
+    .glowing span:nth-child(3n + 1)::before {
+      background: rgba(134,255,0,1);
+      box-shadow: 0 0 20px rgba(134,255,0,1),
+        0 0 40px rgba(134,255,0,1),
+        0 0 60px rgba(134,255,0,1),
+        0 0 80px rgba(134,255,0,1),
+        0 0 0 8px rgba(134,255,0,.1);
+    }
+
+    .glowing span:nth-child(3n + 2)::before {
+      background: rgba(255,214,0,1);
+      box-shadow: 0 0 20px rgba(255,214,0,1),
+        0 0 40px rgba(255,214,0,1),
+        0 0 60px rgba(255,214,0,1),
+        0 0 80px rgba(255,214,0,1),
+        0 0 0 8px rgba(255,214,0,.1);
+    }
+
+    .glowing span:nth-child(3n + 3)::before {
+      background: rgba(0,226,255,1);
+      box-shadow: 0 0 20px rgba(0,226,255,1),
+        0 0 40px rgba(0,226,255,1),
+        0 0 60px rgba(0,226,255,1),
+        0 0 80px rgba(0,226,255,1),
+        0 0 0 8px rgba(0,226,255,.1);
+    }
+
+    .glowing span:nth-child(3n + 1) {
+      animation: animate 10s alternate infinite;
+    }
+
+    .glowing span:nth-child(3n + 2) {
+      animation: animate-reverse 3s alternate infinite;
+    }
+
+    .glowing span:nth-child(3n + 3) {
+      animation: animate 8s alternate infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(180deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-reverse {
+      0% {
+        transform: rotate(360deg);
+      }
+
+      50% {
+        transform: rotate(180deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Glowing Background -->
+  <div class="glowing">
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+  </div>
+  <div class="glowing">
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+  </div>
+  <div class="glowing">
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+  </div>
+  <div class="glowing">
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+  </div>
+
+  <!-- Pacman and Dots -->
+  <div class="pacman circle center">
+    <div class="mouth"></div>
+  </div>
+
+  <!-- Dots Container -->
+  <div class="dots-container">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <script>
+  setTimeout(() => {
+    document.body.style.transition = "opacity 1s";
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+      const returnPage = new URLSearchParams(window.location.search).get("return") || "more";
+      window.location.href = returnPage + ".html";
+    }, 1000);
+
+  }, 3000);
+  </script>
+
+
+
+
+</body>
+</html>

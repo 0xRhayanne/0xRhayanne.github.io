@@ -1,0 +1,660 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+  cursor: url('images/cursor.png') 8 8, auto;
+
+}
+
+
+
+#about-me {
+  padding: 40px 0;
+  height: 100px; /* Prevent jumping by fixing the height */
+}
+
+@font-face {
+  font-family: 'JMH Typewriter';
+  src: url('fonts/retro_computer_personal_use.ttf') format('truetype'); /* Adjust the path if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the custom font to your typing effect */
+#typed-output {
+  font-family: 'JMH Typewriter', 'Courier New', monospace;  /* Custom font with fallback */
+  font-size: 30px;
+  color: black;  /* Example color, adjust as needed */
+  white-space: nowrap;  /* Keeps text on one line */
+  overflow: hidden;  /* Hides text that hasn't been typed yet */
+  border-right: 3px solid #00ff00;  /* Cursor effect */
+  display: inline-block;
+  animation: blink 0.7s steps(1) infinite;  /* Blinking cursor effect */
+  min-height: 1.3em; /* or whatever fits your tallest sentence */
+
+
+}
+
+/* Cursor blink animation */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Cards Section */
+#cards {
+  margin: 50px 0;
+  margin-top: 800px;
+  margin-bottom:200px;
+
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Allow cards to wrap to the next row if needed */
+}
+
+.card {
+  width: calc(25% - 20px);
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.card-text {
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    backdrop-filter: blur(1px);    /* frosted blur effect */
+    padding: 10px 15px;            /* spacing inside the box */
+    border-radius: 8px;            /* rounded corners */
+}
+
+
+/* Language Skills Section */
+#languages {
+  width: 48%; /* Set the width of the language section */
+  text-align: left;
+  margin-left: 2%;
+}
+
+#languages h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.language {
+  margin-bottom: 15px;
+}
+
+.language span {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+.progress-bar {
+  height: 25px;
+  background-color: #ddd;
+  border-radius: 5px;
+  width: 0%;  /* Initial width is 0 */
+  max-width: 500px;  /* Reduced maximum width */
+  position: relative;
+  transition: width 2s ease-in-out; /* Smooth transition */
+}
+
+.progress-bar span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Specific colors for each language bar */
+#portuguese {
+  background-color: #28a745; /* Green for Native (Brazilian Portuguese) */
+}
+
+#english {
+  background-color: #007bff; /* Blue for Fluent English */
+}
+
+#spanish {
+  background-color: #f39c12; /* Orange for Intermediate Spanish */
+}
+
+#japanese {
+  background-color: #e74c3c; /* Red for Beginner Japanese */
+}
+
+/* Flex Container for Languages and OS Chart */
+.languages-os-wrapper {
+  display: flex;
+  justify-content: space-between; /* Place them side by side */
+  gap: 20px; /* Space between the two sections */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin: 50px 0;
+  width: 85%;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+
+}
+
+/* OS Doughnut Chart Section */
+#os-experience {
+  width: 48%; /* Set the width of the OS section */
+  text-align: center;
+  margin-left: 200px;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Donut container */
+.donut {
+  margin-left: 160px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 20px solid transparent;
+  animation: rotateBorder 10s linear infinite;
+  transition: background 1s ease;
+  position: relative;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.donut img {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* OS Names */
+.os-names {
+  display: flex;
+  justify-content: center;  /* Center the names */
+  font-size: 14px;
+  margin-top: 15px;
+  padding: 0 10px;
+  color: #333;
+  font-weight: 600;
+  gap: 2px;  /* Ensure no gap between the name + square pairs */
+  transform: translateX(5px);
+}
+
+/* Each name and square pair */
+.os-names span {
+  display: flex;
+  align-items: center;  /* Align name and square vertically */
+  margin-right: 85px;   /* Removed any right margin */
+  cursor: default;
+}
+
+/* Color Squares on the right side of the name */
+.os-names .square {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;  /* Small rounded corners for the squares */
+  margin-right: -50px;  /* Remove any space after the square */
+  transform: translateX(2px);  /* Pull the square closer to the name */
+}
+
+
+/* Specific colors for each OS in the chart */
+.os-names .windows {
+  background-color: #00CED1; /* Windows */
+
+
+}
+
+.os-names .macos {
+  background-color: #9370DB; /* macOS */
+}
+
+.os-names .linux {
+  background-color: #B22222; /* Linux */
+
+}
+
+.os-names .android {
+  background-color: #8FBC8F; /* Android */
+
+}
+
+.os-names .ios {
+  background-color: #FFDAB9; /* iOS */
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .languages-os-wrapper {
+    flex-direction: column; /* Stack the sections on top of each other */
+    gap: 30px; /* Increase gap for better spacing */
+  }
+
+  #languages, #os-experience {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .card {
+    width: calc(50% - 20px); /* Make cards larger on smaller screens */
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #typed-output {
+    font-size: 1.2rem; /* Smaller font size on small screens */
+  }
+
+  .card {
+    width: 100%; /* Full width for cards */
+    height: auto;
+  }
+
+  .row {
+    gap: 10px; /* Reduce gap between cards */
+  }
+}
+
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+#recent-hobbies {
+  padding: 2rem;
+  background: transparent;
+  overflow: hidden;
+  margin-top: 200px;
+
+}
+
+#recent-hobbies h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+  font-size: 30px ;
+
+}
+
+#recent-hobbies .carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+#recent-hobbies .carousel-track {
+  display: flex;
+  width: calc(250px * 18 + 2rem * 18); /* Adjust based on number of cards */
+  animation: scroll-left 30s linear infinite;
+}
+
+#recent-hobbies .carousel-track:hover {
+  animation-play-state: paused;
+}
+
+#recent-hobbies .carousel-card {
+  flex: 0 0 250px;
+  margin: 0 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0);
+  text-align: center;
+}
+
+#recent-hobbies .carousel-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+#recent-hobbies .carousel-card h3 {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+}
+
+#recent-hobbies .carousel-card p {
+  padding: 0 1rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%));
+  }
+}
+
+
+/* -----------------------------
+   Animated Buttons under Typed.js
+--------------------------------*/
+.button-container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.button {
+  position: relative;
+  padding: 0.5rem 1rem;   /* smaller padding: top/bottom 0.5rem, left/right 1rem */
+  font-size: 0.9rem;
+  font-weight: bold;    /* smaller text */
+  border-radius: 5px;     /* keeps corners rounded */
+  cursor: pointer;
+  color: var(--color);
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 15px var(--color);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+  z-index: 1;
+  background: transparent;
+  margin-top: 140px;
+  flex-wrap: wrap;
+  margin-right: 5rem;
+
+}
+
+.button:hover {
+  color: #fff;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0px var(--color);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color);
+  z-index: -1;
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+.button:hover::before {
+  transform: scale(1);
+  transition-delay: 0.5s;
+  box-shadow: 0 0 10px var(--color),
+              0 0 30px var(--color),
+              0 0 60px var(--color);
+}
+
+.button span {
+  position: absolute;
+  background: var(--color);
+  pointer-events: none;
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--color),
+              0 0 20px var(--color),
+              0 0 30px var(--color),
+              0 0 50px var(--color),
+              0 0 100px var(--color);
+  transition: 0.5s ease-in-out;
+  transition-delay: 0.25s;
+}
+
+.button:hover span {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+/* Positioning spans for animation */
+.button span:nth-child(1),
+.button span:nth-child(3) {
+  width: 40px;
+  height: 4px;
+}
+
+.button span:nth-child(2),
+.button span:nth-child(4) {
+  width: 4px;
+  height: 40px;
+}
+
+.button span:nth-child(1) {
+  top: calc(50% - 2px);
+  left: -50px;
+  transform-origin: left;
+}
+.button:hover span:nth-child(1) {
+  left: 50%;
+}
+
+.button span:nth-child(3) {
+  top: calc(50% - 2px);
+  right: -50px;
+  transform-origin: right;
+}
+.button:hover span:nth-child(3) {
+  right: 50%;
+}
+
+.button span:nth-child(2) {
+  left: calc(50% - 2px);
+  top: -50px;
+  transform-origin: top;
+}
+.button:hover span:nth-child(2) {
+  top: 50%;
+}
+
+.button span:nth-child(4) {
+  left: calc(50% - 2px);
+  bottom: -50px;
+  transform-origin: bottom;
+}
+.button:hover span:nth-child(4) {
+  bottom: 50%;
+}
+
+/* -----------------------------
+   Stick Figure Runner Animation
+--------------------------------*/
+#stick-figure-container {
+  margin-top: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+#stick-figure-canvas {
+  width: 100vw;
+  height: 200px;
+}
+
+#stick-figure-canvas line {
+  stroke: black;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+#stick-figure-canvas circle {
+  fill: black;
+}
+
+#stick-figure-canvas .eye {
+  fill: white;
+  stroke: black;
+  stroke-width: 2;
+}
+
+/* 🎨 Foil background styles */
+
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
+
+  /* Background container */
+  #background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  #background > div {
+    --size: 1vw;
+    --symbol: "✽";
+    position: absolute;
+    top: 0;
+    font-size: clamp(15px, var(--size), 80px);
+    font-family: "Noto Sans Symbols 2", sans-serif;
+    transform-origin: center top;
+    animation: move var(--duration_move, 8s) var(--delay_move, 0s) linear infinite;
+  }
+
+  #background span {
+    display: block;
+    animation: rotate var(--duration_rotate, 2s) ease-in-out infinite alternate both;
+  }
+
+  #background span:after {
+    content: var(--symbol);
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.2);
+    color: transparent;
+    background-clip: text;
+    filter: brightness(1.2) hue-rotate(var(--hue, 0deg));
+    background-image: url(https://images.unsplash.com/photo-1580822115965-0b2532068eff?&ixlib=rb-4.0.3&q=100&w=200&dpr=2);
+    background-size: 200px auto;
+    animation: bg1 var(--duration_clip, 10s) linear infinite alternate both;
+  }
+
+  @keyframes bg1 {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(115deg); }
+    100% { transform: rotate(245deg); }
+  }
+
+  @keyframes move {
+    0% { transform: translate3d(var(--pos_x), -10vh, 0); }
+    100% { transform: translate3d(var(--pos_x), 110vh, 0); }
+  }
+
+
+  /* Void Pulse Background */
+  .void-pulse-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 1, 0, 0.2) 100%,
+      rgb(10, 10, 30) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    filter: url(#void-texture);
+    z-index: -1; /* keep it behind all content */
+  }
+
+  .void-pulse-background .orbit-overlay {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 102, 204, 0.15) 0%, transparent 70%);
+    animation: void-pulse 6s ease-in-out infinite;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes void-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  svg.texture-filter {
+    width: 0;
+    height: 0;
+    position: absolute;
+  }

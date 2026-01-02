@@ -1,0 +1,977 @@
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+/* 🔥 Dark Mode Overrides for bn47 */
+body.dark-mode .bn47 {
+  color: #ffffff;
+  border-color: #cccccc;
+}
+
+body.dark-mode .bn47:before {
+  background-color: #222222;
+  border-color: #222222;
+}
+
+/* === Sections: FLAT STYLE === */
+section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* === Terminal Intro === */
+#terminal-intro {
+  background: #000;
+  color: #33ff33;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+  text-align: left;
+}
+
+#terminal-intro h1,
+#terminal-intro p {
+  margin: 1rem 0 0.5rem 0;
+  color: #33ff33;
+  font-family: 'Courier New', monospace;
+  margin-left: 450px;
+
+}
+
+#terminal-lines {
+  display: block;
+  min-height: 10em;
+  white-space: pre-wrap;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.terminal-intro-lines {
+  margin-top: -4rem;
+}
+/* Reveal */
+.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Header === */
+header {
+  background: rgba(255, 255, 255, 0.08); /* glass transparency */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #000; /* default: black text */
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* When dark mode is active */
+body.dark-mode header {
+  background: rgba(0, 0, 0, 0.25); /* slightly darker glass */
+  color: #fff; /* switch text to white */
+}
+
+
+#typed-intro span {
+  background-color: transparent; /* remove blue highlight behind letters */
+  color: black; /* keep text color as is */
+
+}
+
+
+
+
+
+/* About Me paragraph text */
+.about-text {
+  font-family: 'Segoe UI', sans-serif; /* clean readable font */
+  text-align: justify;
+  font-size: 1.3rem;                   /* slightly larger than base */
+  line-height: 1.8;                     /* more spacing between lines */
+  color: #333;                           /* text color for readability */
+  white-space: pre-wrap;                 /* preserve line breaks in translation */
+  margin: 1.5rem 0;                      /* spacing above/below */
+  transition: color 0.3s ease;           /* smooth color change for dark mode */
+}
+
+/* Dark mode override */
+body.dark-mode .about-text {
+  color: #f1f1f1;                       /* light text in dark mode */
+}
+
+
+
+/* === Navigation === */
+nav {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  gap: 2rem;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #4b6cb7;
+}
+
+/* === Controls === */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* === Section GIFs === */
+.section-gif {
+  width: 150px;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+
+
+
+
+
+
+
+
+/* === Project Cards (Animated Hover Panels) === */
+
+#projects h2{
+  padding: -50px 0;
+  margin-bottom: -20px; /* adjust as needed */
+  margin-bottom: 25px;
+
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 1100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: -70px; /* moves container to the right */
+  gap: 100px 0;
+}
+
+
+.panel {
+  height: 270px;
+  width: 190px;
+  position: relative;
+  flex-basis: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+.panel:hover .card {
+  filter: blur(1.5px);
+  background-size: 120% 120%;
+}
+
+
+
+.panel:hover .title {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.panel:hover .border {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.panel:hover .slide {
+  bottom: 0px;
+}
+
+.panel:hover .ring:before,
+.panel:hover .ring:after {
+  transform: translateX(-50%) translateY(-50%) rotate(310deg);
+}
+
+.ring, .card, .border, .slide, .line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring {
+  color: #fffbf1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 170px;
+}
+
+.card {
+  background: #f0ead6;
+  position: relative;
+  transition: all 1s;
+  height: 270px;
+  width: 190px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Each card has its own background --- */
+.card1 { background-image: url("images/01.jpg"); }
+.card2 { background-image: url("images/02.jpeg"); }
+.card3 { background-image: url("images/03.jpg"); }
+.card4 { background-image: url("images/04.jpg"); }
+.card5 { background-image: url("images/05.jpg"); }
+.card6 { background-image: url("images/06.jpeg"); }
+
+.ring:before,
+.ring:after {
+  content: "";
+  padding: 0.7em 0.4em;
+  position: absolute;
+  left: 50%;
+  width: 115%;
+  top: 50%;
+  display: block;
+  border: 5px solid #50c9c3;
+  border-radius: 50%;
+  transition: transform 1s;
+  transform: translateX(-50%) translateY(-50%) rotate(50deg);
+}
+
+.ring:before {
+  border-color: rgb(235, 235, 235) rgb(235, 235, 235) rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, 0);
+  z-index: -1;
+}
+
+.ring:after {
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgb(235, 235, 235)
+    rgb(235, 235, 235);
+}
+
+.panel .slide .para {
+  text-align: center;
+  position: absolute;
+  font-family: "Playfair Display";
+}
+
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  transition: all 1s;
+  top: 0;
+
+}
+
+
+/* Styles for all text elements */
+.para {
+  bottom: 0;
+  font-size: 8%;
+  font-family: "Raleway";
+  padding: 5px;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Make links inside .para clickable and properly aligned */
+.para a {
+  display: inline-block; /* fixes vertical alignment */
+  color: inherit;        /* same color as title */
+  text-decoration: none; /* remove underline */
+  line-height: inherit;  /* match .para spacing */
+  position: relative;    /* ensures link is above card overlays */
+  z-index: 2;            /* bring clickable above other elements */
+}
+
+/* Optional hover effect*/
+.para a:hover {
+  text-decoration: underline;
+  color: #73F628;
+}
+
+/* Optional: make .card.card2 not block clicks
+.card.card2 {
+  pointer-events: none; /* allows clicks to pass through to the title
+}*/
+
+
+.border {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  height: 260px;
+  width: 180px;
+  transition: border 1s;
+  overflow: hidden;
+}
+
+.fa-plane {
+  font-size: 16px;
+}
+
+
+
+.slide .para {
+  position: static; /* remove absolute positioning */
+  bottom: auto;     /* remove bottom */
+  text-align: center;
+  padding: 0 10px;  /* optional horizontal padding */
+}
+
+/* Keep your original .slide settings; just ensure flex is on */
+.slide {
+  height: 260px;
+  width: 180px;
+  position: relative;
+  border: 1px solid black;
+  bottom: -280px;
+  background: rgba(0, 0, 0, 0.5);
+  transition: bottom 1s;
+  display: flex;          /* enable flex */
+  flex-direction: column; /* vertical stack */
+  align-items: center;    /* center horizontally */
+}
+
+/* Title stays near the top (keep your value if needed) */
+.slide h6 {
+  margin-top: -220px;
+}
+
+/* Demo link sits under the title; remove negative margins */
+.github-link {
+  color: #00acee;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 6px 0;          /* fixed gap */
+  margin-bottom: 100%;
+  transition: color 0.3s;
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+}
+
+
+/* Description: fixed-height block, no resizing */
+.slide p {
+  box-sizing: border-box;
+  height: 90px;           /* fix the visible area */
+  margin: 8px 0 0;        /* gap below the demo link */
+  padding: 0 10px;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 30%;
+  /*overflow:;       /* cut off extra text (no layout change) */
+}
+
+
+
+
+.github-link:hover {
+color: #ffffff;
+text-decoration: underline;
+}
+
+
+   /* ===== Your existing site styles here ===== */
+   body {
+     background: #F2F3EB; /* example */
+     font-family: 'Montserrat', Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+   }
+
+   /* ===== Contact Form CSS (unchanged) ===== */
+   #container {
+     border: solid 3px rgba(71, 69, 68, 0.6);
+     max-width: 880px;
+     margin: 60px auto;
+     zoom: 0.7;
+     position: relative;
+     padding: 40px;
+     background: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     border-radius: 15px;
+     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+     margin
+   }
+
+   form {
+     padding: 37.5px;
+     margin: 50px 0;
+   }
+
+   h1 {
+     color: #474544;
+     font-size: 32px;
+     font-weight: 700;
+     letter-spacing: 7px;
+     text-align: center;
+     text-transform: uppercase;
+     margin-bottom: 0.8em;
+   }
+
+
+
+   .underline {
+     border-bottom: solid 2px #474544;
+     margin: -0.512em auto;
+     width: 80px;
+   }
+
+   .icon_wrapper {
+     margin: 50px auto 0;
+     width: 100%;
+     text-align: center;
+   }
+
+   .icon {
+     display: block;
+     fill: #474544;
+     height: 50px;
+     margin: 0 auto;
+     width: 50px;
+   }
+
+   .email { float: right; width: 45%; }
+   .name { float: left; width: 45%; }
+   .message { float: none; }
+
+   input[type='text'], [type='email'], select, textarea {
+     background: none;
+     border: none;
+     border-bottom: solid 2px #474544;
+     color: #474544;
+     font-size: 1em;
+     font-weight: 400;
+     letter-spacing: 1px;
+     margin: 0 0 1.875em 0;
+     padding: 0 0 0.875em 0;
+     text-transform: uppercase;
+     width: 100%;
+     box-sizing: border-box;
+     transition: all 0.3s;
+   }
+
+   input[type='text']:focus, [type='email']:focus, textarea:focus {
+     outline: none;
+     padding: 0 0 0.875em 0;
+   }
+
+   select {
+     background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+     outline: none;
+     -moz-appearance: none;
+     -webkit-appearance: none;
+
+   }
+
+   select::-ms-expand { display: none; }
+
+   .subject, .telephone { width: 100%; }
+
+   textarea {
+     line-height: 150%;
+     height: 150px;
+     resize: none;
+     width: 100%;
+   }
+
+   ::-webkit-input-placeholder { color: #474544; }
+   :-moz-placeholder { color: #474544; opacity: 1; }
+   ::-moz-placeholder { color: #474544; opacity: 1; }
+   :-ms-input-placeholder { color: #474544; }
+
+   #form_button {
+     background: none;
+     border: solid 2px #474544;
+     color: #474544;
+     cursor: pointer;
+     display: inline-block;
+     font-family: 'Helvetica', Arial, sans-serif;
+     font-size: 0.875em;
+     font-weight: bold;
+     outline: none;
+     padding: 20px 35px;
+     text-transform: uppercase;
+     transition: all 0.3s;
+
+   }
+
+   #form_button:hover {
+     background: #474544;
+     color: #F2F3EB;
+
+   }
+
+   /* Center the submit button */
+ .submit {
+   text-align: center;
+   margin-top: 40px;      /* space above the button */
+   /*padding-bottom: 30px;  /* space below the button, doesn't stretch container */
+ }
+
+ /* Keep form padding normal */
+ form {
+   padding: 37.5px;
+   margin: 50px 0;
+ }
+
+ /* Keep existing styles */
+.social_links {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 30px;
+ flex-wrap: wrap;
+ transform: translateY(5px);
+}
+
+.social_links a {
+ color: #474544;
+ text-decoration: none;
+ font-size: 1.2em;
+ letter-spacing: 0.5px;
+ transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+ word-break: break-all;
+}
+
+.social_links a:hover {
+ color: #000;
+ transform: scale(1.5);
+ font-weight: bold; /* make text bold on hover */
+}
+
+/* Add blur effect to other links when hovering one */
+.social_links:hover a:not(:hover) {
+ filter: blur(3px);
+ opacity: 0.6; /* optional: fade them slightly */
+ transform: scale(1); /* prevents them from shrinking unintentionally */
+}
+
+
+
+ /* ===== Dark Mode for Contact Form ===== */
+ body.dark-mode #container,
+ body.dark-mode form {
+   background: rgba(34, 34, 34, 0.7);
+   border-color: #555;
+ }
+
+ body.dark-mode input[type='text'],
+ body.dark-mode input[type='email'],
+ body.dark-mode textarea,
+ body.dark-mode select,
+ body.dark-mode #form_button {
+   background: none;
+   border-bottom: solid 2px #ccc;
+   color: #eee;
+ }
+
+ body.dark-mode ::-webkit-input-placeholder { color: #ccc; }
+ body.dark-mode :-moz-placeholder { color: #ccc; opacity: 1; }
+ body.dark-mode ::-moz-placeholder { color: #ccc; opacity: 1; }
+ body.dark-mode :-ms-input-placeholder { color: #ccc; }
+
+ body.dark-mode #form_button {
+   border: solid 2px #ccc;
+   color: #eee;
+ }
+
+ body.dark-mode #form_button:hover {
+   background: #eee;
+   color: #222;
+ }
+
+ body.dark-mode .social_links a {
+   color: #eee;
+ }
+
+ body.dark-mode .social_links a:hover {
+   color: #fff;
+ }
+
+ /* ===== Dark Mode for Contact Form Header & Icon ===== */
+body.dark-mode h1 {
+color: #ffffff; /* Keep in Touch text white */
+}
+
+body.dark-mode .underline {
+border-bottom-color: #ffffff; /* underline white */
+}
+
+body.dark-mode .icon {
+fill: #ffffff; /* SVG icon white */
+}
+
+
+
+
+/* Ensure the options themselves are black */
+body.dark-mode select option {
+color: #ffffff;
+background-color: #212020;
+}
+
+
+
+
+
+
+
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 5rem;
+  background: transparent;
+  color: inherit;
+}
+
+
+.gif-brain {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  display: inline-block;
+
+}
+
+.gif-heart {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+
+}
+
+
+
+
+/* === Tech Stack === */
+#tech-stack h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+  margin-top: 12rem;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.tech-item {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.tech-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: scale(1.2);
+}
+
+.tech-item:hover img {
+  filter: grayscale(0%);
+  transform: rotate(2deg);
+}
+
+/* === Particles Background === */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* === Loading Screen === */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #121212;
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .section-gif {
+    width: 150px;
+  }
+}
+
+/* === Sections: With Extra Spacing === */
+section {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 0 1rem;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Add extra space above Contact section title */
+#contact h2 {
+  margin-top: 10rem; /* adjust as needed */
+}
+
+
+/* === Button Style: bn47 === */
+.bn47 {
+  position: relative;
+  padding: 1rem 2rem 0.5rem 2.5rem;
+  color: #000000;
+  border: 3px solid #776e62;
+  background: none;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: padding 0.3s ease-in-out;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.bn47:before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.bn47:hover {
+  padding: 0.75rem 2.25rem;
+}
+
+.bn47:hover:before {
+  top: 0;
+  left: 0;
+}
+
+/* === Nav Labels Smoke Splash Hover Effect === */
+
+nav a {
+  position: relative;
+  overflow: visible; /* allow pseudo elements outside */
+  z-index: 0;
+  transition: color 0.3s ease;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, transparent 20%, var(--splash-color) 80%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  filter: blur(25px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hover animation */
+nav a:hover::before {
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1);
+  animation: splashSmoke 0.6s forwards;
+}
+
+/* Strong colors for light mode */
+nav a.about::before {
+  --splash-color: rgba(255, 50, 50, 0.85); /* strong red */
+}
+
+nav a.projects::before {
+  --splash-color: rgba(50, 255, 120, 0.85); /* strong green */
+}
+
+nav a.contact::before {
+  --splash-color: rgba(50, 120, 255, 0.85); /* strong blue */
+}
+
+/* Neon colors for dark mode */
+body.dark-mode nav a.about::before {
+  --splash-color: rgba(255, 0, 0, 0.95); /* neon red */
+  filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.7)) blur(30px);
+}
+
+body.dark-mode nav a.projects::before {
+  --splash-color: rgba(0, 255, 115, 0.95); /* neon green */
+  filter: drop-shadow(0 0 6px rgba(0, 255, 115, 0.7)) blur(30px);
+}
+
+body.dark-mode nav a.contact::before {
+  --splash-color: rgba(0, 115, 255, 0.95); /* neon blue */
+  filter: drop-shadow(0 0 6px rgba(0, 115, 255, 0.7)) blur(30
+  }
+
+  .liquid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #111;
+  }
+
+
+  .btn-liquid {
+    display: inline-block;
+    position: relative;
+    width: 240px;
+    height: 60px;
+    border-radius: 30px;
+    color: #fff;
+    font: 700 14px/60px "Segoe UI", sans-serif;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+
+  .btn-liquid .inner {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .btn-liquid canvas {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    z-index: 1;
+  }
+
+
+  #notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  background-color: #4BB543; /* green success by default */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10000;
+
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateY(-100%);
+}
+
+#notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#notification.error {
+  background-color: #E74C3C; /* red for errors */
+}
