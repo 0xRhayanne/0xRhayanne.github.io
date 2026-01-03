@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+
+  <script>
+    // Only redirect to animation on first page load, not on button clicks
+    if (!sessionStorage.getItem("animationPlayed") && !performance.getEntriesByType("navigation")[0].type.includes("back_forward")) {
+      sessionStorage.setItem("animationPlayed", "1");
+      window.location.href = "animation.html?return=more";
+    }
+  </script>
+
+
+
+  <!-- Include Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="newstyle.css" />
+
+  <!-- Include ProgressBar.js -->
+  <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+
+  <!-- Link to the JS file -->
+  <script src="newscript.js" defer></script>
+
+
+
+
+</head>
+<body>
+
+  <!-- Void Pulse Background -->
+<div class="void-pulse-background">
+  <span class="orbit-overlay"></span>
+  <svg class="texture-filter">
+    <filter id="void-texture">
+      <feTurbulence
+        result="noise"
+        numOctaves="3"
+        baseFrequency="0.02"
+        type="turbulence"
+      ></feTurbulence>
+      <feGaussianBlur
+        result="blur"
+        stdDeviation="1"
+        in="noise"
+      ></feGaussianBlur>
+      <feSpecularLighting
+      id="void-specular"
+        result="specular"
+        lighting-color="#FFFFFF"
+        specularExponent="20"
+        specularConstant="1"
+        surfaceScale="3"
+        in="blur"
+      >
+        <feDistantLight elevation="45" azimuth="90"></feDistantLight>
+      </feSpecularLighting>
+      <feComposite
+        result="lit"
+        operator="over"
+        in2="SourceGraphic"
+        in="specular"
+      ></feComposite>
+      <feBlend mode="screen" in2="lit" in="SourceGraphic"></feBlend>
+    </filter>
+  </svg>
+</div>
+
+
+
+  <!-- 🌟 Animated foil background -->
+<div id="background"></div>
+
+
+  <!-- About Me Section with Typed.js -->
+  <div id="about-me">
+    <p id="typed-output"></p> <!-- This is where the typed text will appear -->
+
+
+
+    <!-- Buttons under Typed.js text -->
+    <div class="button-container">
+      <a class="button" id="theme-toggle" href="#" style="--color:#1e9bff;">
+        <span></span><span></span><span></span><span></span>
+        Light/Dark
+      </a>
+
+      <a class="button" id="translate-btn" href="#" style="--color:#ff1867;">
+        <span></span><span></span><span></span><span></span>
+        Translate
+      </a>
+
+      <a class="button" id="home-btn" href="index.html" style="--color:#6eff3e;">
+        <span></span><span></span><span></span><span></span>
+        Main Page
+      </a>
+    </div>
+
+    <!-- Stick Figure Runner Animation -->
+<div id="stick-figure-container">
+  <svg id="stick-figure-canvas"></svg>
+</div>
+
+  </div>
+
+  <!-- Cards Section -->
+<div id="cards">
+  <div class="row">
+    <div class="card" style="background-image: url('images/teacher.jpg');">
+      <div class="card-text">
+        <h3>Teacher 🗺️</h3>
+        <p>Once taught humans from all over the world. Former teacher, still grading life choices. Patience level: Legendary.</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/translator.jpg');">
+      <div class="card-text">
+        <h3>Translator 🔠</h3>
+        <p>Used to turn words into other words. I left translation, but the voices in different languages stayed.</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/learner.jpg');">
+      <div class="card-text">
+        <h3>Learner ✏️</h3>
+        <p>Learning everything except how to rest. Always upgrading, brain under continuous construction.</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/reading.jpg');">
+      <div class="card-text">
+        <h3>Reader 📖</h3>
+        <p>Just one more chapter (said three hours ago). Still waiting for life to have a plot twist this good.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card" style="background-image: url('images/gaming.jpg');">
+      <div class="card-text">
+        <h3>Gamer 🕹️</h3>
+        <p>Strategic thinker, fast reflexes, and a top-tier respawner. I’m not ignoring you, I’m just in a boss fight.</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/pet.jpg');">
+      <div class="card-text">
+        <h3>Animal 🦖 Lover</h3>
+        <p>Doesn’t matter if it’s a hamster or a hydra, I’m already trying to pet it. Species optional, snuggles required.</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/foodie.jpg');">
+      <div class="card-text">
+        <h3>Foodie 🫔</h3>
+        <p>Will travel for snacks. Adventurous palate, zero regrets. Calories? I prefer to call them ‘flavor points.’</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('images/binger.jpg');">
+      <div class="card-text">
+        <h3>Binger 📺</h3>
+        <p>Finishes series faster than Netflix recommends them. I have a PhD in ‘Just one more episode.’</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- Profile Section with Separate Containers -->
+  <div class="profile-section">
+    <div class="languages-os-wrapper">
+
+      <!-- Languages Section -->
+      <div id="languages" class="languages-container">
+        <h2>Languages</h2>
+        <div class="language">
+          <span>Brazilian Portuguese (Native)</span>
+          <div class="progress-bar" id="portuguese"></div>
+        </div>
+        <div class="language">
+          <span>English (Advanced)</span>
+          <div class="progress-bar" id="english"></div>
+        </div>
+        <div class="language">
+          <span>Spanish (Intermediate)</span>
+          <div class="progress-bar" id="spanish"></div>
+        </div>
+        <div class="language">
+          <span>Japanese (Beginner)</span>
+          <div class="progress-bar" id="japanese"></div>
+        </div>
+      </div>
+
+      <!-- Animated Donut Chart -->
+      <div id="os-experience" class="os-container">
+        <h2>OS Experience</h2>
+
+        <!-- Donut chart container -->
+        <div class="donut">
+          <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTlyeTd5aHFvNDczNm55cmN4N3B6MnUxMHV1YXFoaTlqemY3OWRjeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iXKusPZrPi2AIVQeRN/giphy.gif" alt="Donut GIF" />
+        </div>
+
+        <!-- OS Names & Squares -->
+        <div class="os-names">
+          <span>Windows<div class="square windows"></div></span>
+          <span>macOS<div class="square macos"></div></span>
+          <span>Linux<div class="square linux"></div></span>
+          <span>Android<div class="square android"></div></span>
+          <span>iOS<div class="square ios"></div></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Add this section where you want the recent hobbies carousel -->
+  <section id="recent-hobbies">
+    <h2>Recent Hobbies</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <!-- Add your hobby cards here -->
+        <div class="carousel-card">
+          <img src="images/book1.jpg" alt="Book" />
+          <h3>Book ✅</h3>
+          <p></p>
+          <p>Finished </p>
+          <p>Funny, clever, and full of feathered chaos, loved it! Nature’s comedy, one insult at a time.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game1.jpg" alt="Game" />
+          <h3>Game ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A timeless classic that never stops inspiring awe. Feels fresh, plays legendary.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie1.jpg" alt="Serie" />
+          <h3>Serie ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A masterpiece! Great chemistry, gorgeous visuals, and a storyline that keeps you hooked from the first episode.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/book2.jpg" alt="Book" />
+          <h3>Book ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A wonderful continuation of an extraordinary true story. Equal parts humor and heart,
+            it reminds us that even the smallest companions can make the biggest difference.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game2.jpeg" alt="Game" />
+          <h3>Game ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A chilling blend of sci-fi horror and psychological terror, Dead Space meets Silent Hill.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie2.jpg" alt="Serie" />
+          <h3>Serie ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A charming mix of humor, family drama, and online adventure. A proof that even MMOs can bring people closer.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/book3.jpg" alt="Book" />
+          <h3>Book ⏳</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>Gripping and deeply moving, a heartbreaking, powerful story of love and survival in unimaginable circumstances.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie3.jpeg" alt="Serie" />
+          <h3>Serie ⏳</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>Grumpy,Crossbows, motorcycles, and the occasional soft side, he makes surviving the zombie apocalypse look easy.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game3.jpg" alt="Game" />
+          <h3>Game ⏳</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>A haunting Belle Époque RPG where the clock’s ticking, every scene felt like art.
+            Every shadow hides a story, it's brilliant and eerie.</p>
+        </div>
+
+
+        <!-- Duplicate for seamless scroll -->
+        <div class="carousel-card">
+          <img src="images/book1.jpg" alt="Book" />
+          <h3>Book ✅</h3>
+          <p></p>
+          <p>Finished </p>
+          <p>Funny, clever, and full of feathered chaos, loved it! Nature’s comedy, one insult at a time.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game1.jpg" alt="Game" />
+          <h3>Game ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A timeless classic that never stops inspiring awe. Feels fresh, plays legendary.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie1.jpg" alt="Serie" />
+          <h3>Serie ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A masterpiece! Great chemistry, gorgeous visuals, and a storyline that keeps you hooked from the first episode.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/book2.jpg" alt="Book" />
+          <h3>Book ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A wonderful continuation of an extraordinary true story. Equal parts humor and heart,
+            it reminds us that even the smallest companions can make the biggest difference.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game2.jpeg" alt="Game" />
+          <h3>Game ✅</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>A chilling blend of sci-fi horror and psychological terror, Dead Space meets Silent Hill.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie2.jpg" alt="Serie" />
+          <h3>Serie ✅</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>A charming mix of humor, family drama, and online adventure. A proof that even MMOs can bring people closer.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/book3.jpg" alt="Book" />
+          <h3>Book ⏳</h3>
+          <p></p>
+          <p>Finished</p>
+          <p>Gripping and deeply moving, a heartbreaking, powerful story of love and survival in unimaginable circumstances.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/serie3.jpeg" alt="Serie" />
+          <h3>Serie ⏳</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>Grumpy,Crossbows, motorcycles, and the occasional soft side, he makes surviving the zombie apocalypse look easy.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/game3.jpg" alt="Game" />
+          <h3>Game ⏳</h3>
+          <p></p>
+          <p>In progress</p>
+          <p>A haunting Belle Époque RPG where the clock’s ticking, every scene felt like art.
+            Every shadow hides a story, it's brilliant and eerie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // DO NOT remove animationPlayed here! It causes infinite loop
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.removeItem("animationPlayed");
+    });
+  </script>
+
+
+
+
+</body>
+</html>
