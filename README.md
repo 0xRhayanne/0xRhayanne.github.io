@@ -1,4 +1,4 @@
-<h1 align="center">Building now, improving always.</h1>
+<h1 align="center">Writing code, breaking things, and learning from it.</h1>
 
 
 <p align="center">
