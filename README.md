@@ -1,5 +1,3 @@
-# 0xRhayanne.github.io
-
 <h1 align="center">Building now, improving always.</h1>
 
 
